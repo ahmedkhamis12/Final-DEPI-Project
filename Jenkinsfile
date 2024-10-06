@@ -38,12 +38,10 @@
 // }
 
 
-def gv
-
 pipeline {
     agent any
     tools {
-        nodejs 'Nodejs-22.9.0'  //from the tools configuration
+        nodejs 'Nodejs-22.9.0'  // from the tools configuration
     }
     stages {
         stage("Init") {
@@ -74,6 +72,18 @@ pipeline {
                     echo 'Deploying the Node.js application...'
                     gv.deployApp()  // Deploy the application (if you have any specific steps)
                 }
+            }
+        }
+    }
+    post {
+        success {
+            script {
+                slackSend(channel: '#depi-slack-channel', message: "Build succeeded: ${env.JOB_NAME} #${env.BUILD_NUMBER}")
+            }
+        }
+        failure {
+            script {
+                slackSend(channel: '#depi-slack-channel', message: "Build failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}")
             }
         }
     }
