@@ -23,11 +23,13 @@
 
 def buildNodeApp() {
     echo "Building Node.js application..."
-    // Install Node.js dependencies
-    sh 'npm install'
-    // Build the application (you can adjust this based on your project’s build script)
-    sh 'npm run build'
+    // Navigate to the subdirectory if necessary
+    dir('app') {  // Replace with your actual directory
+        sh 'npm install'
+        sh 'npm run build'
+    }
 }
+
 
 def buildImage() {
     echo "Building the Docker image..."
