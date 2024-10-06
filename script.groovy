@@ -26,7 +26,7 @@ def buildNodeApp() {
     // Navigate to the subdirectory if necessary
     dir('app') {  // Replace with your actual directory
         sh 'npm install'
-        sh 'npm run build'
+        
     }
 }
 
