@@ -27,9 +27,22 @@ def buildNodeApp() {
     dir('app') {  // Replace with your actual directory
         sh 'npm install'
         
+        // Ensure Jest is installed
+        sh 'npm install --save-dev jest'
+
+        // Create or update package.json with the test script
+        sh '''
+            jq '.scripts += {"test": "jest --coverage"}' package.json > tmp.json && mv tmp.json package.json
+        '''
     }
 }
 
+def runTests() {
+    echo "Running Jest tests..."
+    dir('app') {  // Replace with your actual directory
+        sh 'npm test'  // Executes the test script defined in package.json
+    }
+}
 
 def buildImage() {
     echo "Building the Docker image..."
@@ -42,7 +55,6 @@ def buildImage() {
 
 def deployApp() {
     echo "Deploying the application..."
-    
 }
 
 return this
