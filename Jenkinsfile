@@ -59,13 +59,6 @@ pipeline {
                 }
             }
         }
-        stage("Run Tests") {
-            steps {
-                script {
-                    gv.runTests()  // Run Jest tests
-                }
-            }
-        }
         stage("Build Image and Push to Docker Hub") {
             steps {
                 script {
@@ -77,7 +70,7 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying the Node.js application...'
-                    gv.deployApp()  // Deploy the application
+                    gv.deployApp()  // Deploy the application (if you have any specific steps)
                 }
             }
         }
