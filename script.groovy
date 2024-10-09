@@ -33,7 +33,7 @@ def buildNodeApp() {
 
 def buildImage() {
     echo "Building the Docker image..."
-        sh "docker build -t ghanemovic/depi-final-project:latest /var/jenkins_home/workspace/DEPI Final Project/Dockerfile"
+        sh "docker build -t ghanemovic/depi-final-project:latest ."
         sh "echo $password | docker login -u $Username --password-stdin"
         sh "docker push ghanemovic/depi-final-project:latest"
     }
