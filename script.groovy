@@ -37,7 +37,7 @@ def buildImage() {
         sh "echo $password | docker login -u $Username --password-stdin"
         sh 'docker push ghanemovic/depi-final-project:latest'  
     }
-}
+
 
 def deployApp() {
     echo "Deploying the application..."
