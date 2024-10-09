@@ -33,10 +33,11 @@ def buildNodeApp() {
 
 def buildImage() {
     echo "Building the Docker image..."
-    withCredentials([usernamePassword(credentialsId: 'Dockeraut', passwordVariable: 'PASS', usernameVariable: 'USER')])
+    withCredentials([usernamePassword(credentialsId: 'Dockeraut', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
         sh "docker build -t ghanemovic/depi-final-project:latest ."
         sh "echo $PASS| docker login -u $USER --password-stdin"
         sh "docker push ghanemovic/depi-final-project:latest"
+    }
     }
 
 
