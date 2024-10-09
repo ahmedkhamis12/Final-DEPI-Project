@@ -3,7 +3,7 @@ FROM node:13-alpine
 ENV MONGO_DB_USERNAME=admin \
     MONGO_DB_PWD=password
 
-COPY ./app /var/jenkins/home/workspace/DEPI\Final/Project/
+COPY .. /var/jenkins/home/workspace/DEPI\Final/Project/
 
 WORKDIR /var/jenkins_home/workspace/DEPI\Final\Project/
 
