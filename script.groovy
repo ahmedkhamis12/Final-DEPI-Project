@@ -33,9 +33,9 @@ def buildNodeApp() {
 
 def buildImage() {
     echo "Building the Docker image..."
-        sh 'docker build -t ghanemovic/depi-final-project:latest.'  
+        sh "docker build -t ghanemovic/depi-final-project:latest Dockerfile"
         sh "echo $password | docker login -u $Username --password-stdin"
-        sh 'docker push ghanemovic/depi-final-project:latest'  
+        sh "docker push ghanemovic/depi-final-project"
     }
 
 
