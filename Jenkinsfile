@@ -75,6 +75,7 @@ pipeline {
             }
         }
         }
+        
         stage("Build Image and Push to Docker Hub") {
             steps {
                 script {
@@ -91,6 +92,11 @@ pipeline {
             }
         }
     }
+
+    cache {
+    directories: ['node_modules']
+}
+
     post {
         success {
             script {
