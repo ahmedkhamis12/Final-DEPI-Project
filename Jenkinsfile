@@ -60,12 +60,21 @@ pipeline {
             }
         }
 
-        stage('Run Unit Tests') {
-            steps {
-                sh 'npx jest'
+        // stage('Run Unit Tests') {
+        //     steps {
+        //         sh 'npx jest'
+        //     }
+        // }
+
+        stage('Parallel Tests') {
+            parallel {
+                stage('Unit Tests') {
+                    steps {
+                        sh 'npm test'
+                }
             }
         }
-        
+        }
         stage("Build Image and Push to Docker Hub") {
             steps {
                 script {
