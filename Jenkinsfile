@@ -59,6 +59,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Run Unit Tests') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        
         stage("Build Image and Push to Docker Hub") {
             steps {
                 script {
@@ -87,5 +94,5 @@ pipeline {
             }
         }
     }
-    
+
 }
