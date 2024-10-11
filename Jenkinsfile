@@ -70,7 +70,7 @@ pipeline {
             parallel {
                 stage('Unit Tests') {
                     steps {
-                        sh 'npm test'
+                        sh 'npx jest'
                 }
             }
         }
