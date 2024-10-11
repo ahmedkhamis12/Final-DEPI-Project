@@ -25,7 +25,13 @@ def buildNodeApp() {
     echo "Building Node.js application..."
     // Navigate to the subdirectory if necessary
     dir('app') {  // Replace with your actual directory
-        sh 'npm install'
+        steps {
+                cache(maxCacheSize: 1, caches: [
+                    [$class: 'BuildCache', path: 'node_modules']
+                ]) {
+                    sh 'npm install'
+                }
+            }
         
     }
 }
