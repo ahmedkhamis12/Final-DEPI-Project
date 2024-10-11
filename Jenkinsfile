@@ -93,10 +93,6 @@ pipeline {
         }
     }
 
-    cache {
-    directories: ['node_modules']
-}
-
     post {
         success {
             script {
