@@ -62,7 +62,8 @@ pipeline {
 
         stage('Run Unit Tests') {
             steps {
-                sh 'npx jest'
+                sh 'npx jest --detectOpenHandles
+'
             }
         }
         
