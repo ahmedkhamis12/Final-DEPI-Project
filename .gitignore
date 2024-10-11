@@ -1,5 +1,9 @@
 node_modules
-
 my-depi.pem
 Gh-test.pem
 gittoken.txt
+node_modules/
+coverage/
+dockerfile
+app/package.json
+app/package-lock.json
