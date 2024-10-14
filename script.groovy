@@ -48,14 +48,14 @@ def deployApp() {
     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-cred']]) {
         // Set kubeconfig environment variable
         withCredentials([file(credentialsId: 'eks-kubeconfig', variable: 'config')]) {
-            Set the KUBECONFIG environment variable
+            //Set the KUBECONFIG environment variable
             sh 'export KUBECONFIG=$config'
 
             // Change to the directory containing your deployment and service files
             // dir('/home/nour/depi/Final-DEPI-Project/') {
             //     // Deploy the application using kubectl
-                sh '/usr/local/bin/kubectl apply -f deployment.yaml'
-                sh '/usr/local/bin/kubectl apply -f service.yaml'
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
             // }
         }
     }
