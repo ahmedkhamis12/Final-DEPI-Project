@@ -73,7 +73,7 @@ pipeline {
                 }
             }
         }
-        stage("Deploy") {
+        stage("Deploy to eks") {
             steps {
                 script {
                     echo 'Deploying the Node.js application...'
