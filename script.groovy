@@ -54,8 +54,8 @@ def deployApp() {
             // Change to the directory containing your deployment and service files
             // dir('/home/nour/depi/Final-DEPI-Project/') {
             //     // Deploy the application using kubectl
-                sh 'kubectl apply -f deployment.yaml'
-                sh 'kubectl apply -f service.yaml'
+                sh '/usr/local/bin/kubectl apply -f deployment.yaml'
+                sh '/usr/local/bin/kubectl apply -f service.yaml'
             // }
         // }
     }
