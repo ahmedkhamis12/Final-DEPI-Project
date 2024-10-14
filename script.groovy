@@ -45,11 +45,11 @@ def deployApp() {
     echo "Deploying the application to EKS..."
     
     // Use AWS credentials
-    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'your-aws-credentials-id']]) {
+    // withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'your-aws-credentials-id']]) {
         // Set kubeconfig environment variable
-        withCredentials([file(credentialsId: 'your-kubeconfig-id', variable: 'KUBECONFIG_FILE')]) {
+        // withCredentials([file(credentialsId: 'your-kubeconfig-id', variable: 'KUBECONFIG_FILE')]) {
             // Set the KUBECONFIG environment variable
-            sh 'export KUBECONFIG=$KUBECONFIG_FILE'
+            // sh 'export KUBECONFIG=$KUBECONFIG_FILE'
 
             // Change to the directory containing your deployment and service files
             dir('/home/nour/depi/Final-DEPI-Project/') {
@@ -57,8 +57,8 @@ def deployApp() {
                 sh 'kubectl apply -f deployment.yaml'
                 sh 'kubectl apply -f service.yaml'
             }
-        }
-    }
+        // }
+    // }
 }
 
 return this
