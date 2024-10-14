@@ -73,14 +73,7 @@ pipeline {
                 }
             }
         }
-        stage("Deploy to eks") {
-            steps {
-                script {
-                    echo 'Deploying the Node.js application...'
-                    gv.deployApp()  // Deploy the application
-                }
-            }
-        }
+     
     }
     post {
         success {
