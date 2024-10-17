@@ -1,5 +1,5 @@
+// def gv
 
-def gv
 // pipeline {
 //     agent any
 //     tools {
@@ -36,6 +36,7 @@ def gv
 //         }
 //     }
 // }
+
 
 pipeline {
     agent any
@@ -90,7 +91,6 @@ pipeline {
                 }
             }
         }
-     
     }
 
     post {
