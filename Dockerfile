@@ -5,7 +5,9 @@ ENV MONGO_DB_USERNAME=admin \
 
 COPY ./app /var/jenkins/home/workspace/DEPI\Final\Project/app
 
+
 WORKDIR /var/jenkins_home/workspace/DEPI\Final\Project/app
+
 
 # will execute npm install in /home/app because of WORKDIR
 RUN npm install

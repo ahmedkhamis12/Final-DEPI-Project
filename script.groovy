@@ -18,7 +18,7 @@
 //     }
 // }
 
-// return this
+return this
 
 
 def buildNodeApp() {
@@ -36,12 +36,25 @@ def buildImage() {
         sh "docker build -t ghanemovic/depi-final-project:latest ."
         sh "echo $PASS| docker login -u $USER --password-stdin"
         sh "docker push ghanemovic/depi-final-project:latest"
-    }
-}
 
 def deployApp() {
-    echo "Deploying the application..."
+    echo "Deploying the application to EKS..."
     
+    // Use AWS credentials
+    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-cred']]) {
+        // Set kubeconfig environment variable
+        withCredentials([file(credentialsId: 'eks-kubeconfig', variable: 'config')]) {
+            //Set the KUBECONFIG environment variable
+            sh 'export KUBECONFIG=$config'
+
+            // Change to the directory containing your deployment and service files
+            // dir('/home/nour/depi/Final-DEPI-Project/') {
+            //     // Deploy the application using kubectl
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
+            // }
+        }
+    }
 }
 
 return this
