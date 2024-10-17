@@ -33,7 +33,8 @@ def buildImage() {
         sh "docker build -t ghanemovic/depi-final-project:latest ."
         sh "echo $PASS| docker login -u $USER --password-stdin"
         sh "docker push ghanemovic/depi-final-project:latest"
-
+    }
+    }
 // def deployApp() {
 //     echo "Deploying the application to EKS..."
     
