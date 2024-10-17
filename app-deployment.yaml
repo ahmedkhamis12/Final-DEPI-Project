@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - image: ghanemovic/depi-final-project:latest
-          name: my-app
+          name: app
           ports:
             - containerPort: 3000
               protocol: TCP
