@@ -3,12 +3,12 @@ FROM node:13-alpine
 ENV MONGO_DB_USERNAME=admin \
     MONGO_DB_PWD=password
 
-COPY ./app /var/jenkins/home/workspace/DEPI\Final\Project/app
+RUN mkdir -p /home/app
 
-
-WORKDIR /var/jenkins_home/workspace/DEPI\Final\Project/app
-
-
+COPY ./app /home/app
+    
+# set default dir so that next commands executes in /home/app dir
+WORKDIR /home/app
 # will execute npm install in /home/app because of WORKDIR
 RUN npm install
 
