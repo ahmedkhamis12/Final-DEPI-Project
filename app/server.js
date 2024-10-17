@@ -82,6 +82,10 @@ app.get('/get-profile', function (req, res) {
   });
 });
 
-app.listen(port, function () {
-  console.log(`Application is running on http://localhost:${port}`);
-});
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Application is running on http://localhost:${port}`);
+  });
+}
+
+module.exports = app;
