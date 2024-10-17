@@ -79,7 +79,7 @@
     <div class='container' id='container'>
         <div class="header">
             <h1>DevOps Engineer Profile</h1>
-            <img src='home/app/images/DevOps.gif' alt="home/app/images/DevOps.gif">
+            <img src='images/DevOps.gif' alt="images/DevOps.gif">
         </div>
         <div class="profile-details">
             <span>Name:</span> <h3 id='name'>Ahmed Ghanem</h3>
@@ -95,7 +95,7 @@
     <div class='container' id='container-edit' style="display:none;">
         <div class="header">
             <h1>Edit DevOps Profile</h1>
-            <img src='home/app/images/DevOps.gif' alt="home/app/images/DevOps.gif">
+            <img src='./images/DevOps.gif' alt="DevOps Image">
         </div>
         <div class="profile-edit">
             <label for='input-name'>Name:</label>
@@ -114,7 +114,7 @@
     <script>
         // Fetch user profile data
         (async function init() {
-            const response = await fetch('http://127.0.0.1:${port}/get-profile');
+            const response = await fetch('http://127.0.0.1:3000/get-profile');
             const user = await response.json();
 
             document.getElementById('name').textContent = user.name || 'Ahmed Ghanem';
@@ -136,7 +136,7 @@
                 interests: document.getElementById('input-interests').value
             };
 
-            const response = await fetch('http://localhost:${port}/update-profile', {
+            const response = await fetch('http://localhost:3000/update-profile', {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
