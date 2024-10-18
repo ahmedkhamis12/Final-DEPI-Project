@@ -1,7 +1,7 @@
 
 services:
   my-app:
-    image: o-app
+    image: ghanemovic/depi-final-project:latest
     ports:
       - 3000:3000
     depends_on:
