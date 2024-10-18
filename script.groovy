@@ -41,7 +41,7 @@ def buildImage() {
 
 def deployApp() {
     echo "Deploying the application..."
-    
+    sh 'ansible-playbook deploy-docker.yaml'
 }
 
 return this
