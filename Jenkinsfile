@@ -1,4 +1,4 @@
- def gv
+def gv
 
 // pipeline {
 //     agent any
@@ -93,17 +93,17 @@ pipeline {
         }
     }
 
-    post {
-        success {
-            script {
-                slackSend(channel: '#depi-slack-channel', message: "Build succeeded: ${env.JOB_NAME} #${env.BUILD_NUMBER}")
-            }
-        }
-        failure {
-            script {
-                slackSend(channel: '#depi-slack-channel', message: "Build failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}")
-            }
-        }a
-    }
+    // post {
+    //     success {
+    //         script {
+    //             slackSend(channel: '#depi-slack-channel', message: "Build succeeded: ${env.JOB_NAME} #${env.BUILD_NUMBER}")
+    //         }
+    //     }
+    //     failure {
+    //         script {
+    //             slackSend(channel: '#depi-slack-channel', message: "Build failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}")
+    //         }
+    //     }a
+    // }
 
 }
