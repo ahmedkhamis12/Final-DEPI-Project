@@ -36,7 +36,7 @@ pipeline {
                 }
             }
         }
-        }
+    }
         
         stage("Build Image and Push to Docker Hub") {
             steps {
@@ -64,8 +64,7 @@ pipeline {
         failure {
             script {
                 slackSend(channel: '#depi-slack-channel', message: "Build failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}")
+                }
             }
         }
     }
-
-}
