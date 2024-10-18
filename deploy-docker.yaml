@@ -1,6 +1,6 @@
 
 - name: setup docker with ansible
-  hosts: docker_server
+  hosts: 54.204.216.90
   become: yes
 
   tasks:
@@ -11,7 +11,7 @@
         state: present
 
 - name: start docker
-  hosts: docker_server
+  hosts: 54.204.216.90
   become: yes
   tasks:
     - name: start docker
@@ -26,7 +26,7 @@
         append: yes
 
 - name: install nodejs
-  hosts: docker_server
+  hosts: 54.204.216.90
   become: yes
   tasks:
     - name: install nodejs
@@ -36,7 +36,7 @@
         state: present
 
 - name : install docker-compose
-  hosts: docker_server
+  hosts: 54.204.216.90
   become: yes
   tasks:
     - name: install docker-compose
@@ -46,7 +46,7 @@
         mode: +x
 
 - name: copy docker-compose file
-  hosts: docker_server
+  hosts: 54.204.216.90
   tasks:
     - name: copy docker-compose file
       copy:
@@ -54,7 +54,7 @@
         dest: /home/ec2-user/mongo.yaml
 
 - name: copy utility app
-  hosts: docker_server
+  hosts: 54.204.216.90
   tasks:
     - name: copy /utility app
       copy:
@@ -62,7 +62,7 @@
         dest: /home/ec2-user/
 
 - name: install aws-cli
-  hosts: docker_server
+  hosts: 54.204.216.90
   become: yes
   tasks:
     - name: install aws-cli
@@ -72,7 +72,7 @@
         state: present
 
 - name: deploy docker-compose
-  hosts: docker_server
+  hosts: 54.204.216.90
   tasks:
     - name: deploy docker-compose
       become: true
