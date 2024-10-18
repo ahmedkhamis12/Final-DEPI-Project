@@ -80,26 +80,3 @@ pipeline {
     }
 
 }
-        }
-        stage("Deploy") {
-            steps {
-                script {
-                    echo 'Deploying the Node.js application...'
-                    gv.deployApp()  // Deploy the application (if you have any specific steps)
-                }
-            }
-        }
-    }
-
-    // post {
-    //     success {
-    //         script {
-    //             slackSend(channel: '#depi-slack-channel', message: "Build succeeded: ${env.JOB_NAME} #${env.BUILD_NUMBER}")
-    //         }
-    //     }
-    //     failure {
-    //         script {
-    //             slackSend(channel: '#depi-slack-channel', message: "Build failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}")
-    //         }
-    //     }a
-    // }
