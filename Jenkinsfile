@@ -38,7 +38,6 @@
 // }
 
 
-
 pipeline {
     agent any
     tools {
@@ -107,4 +106,8 @@ pipeline {
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ef97ce50800ac0f6320926bd2f1b24c209d5c5ab
