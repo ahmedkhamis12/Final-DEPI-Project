@@ -52,15 +52,19 @@ pipeline {
                 }
             }
         }
-        stage("Deploy") {
+        stage('Run Ansible Playbook') {
             steps {
-                script {
-                    echo 'Deploying the Node.js application...'
-                    gv.deployApp()  // Deploy the application (if you have any specific steps)
-                }
+                // Run the playbook and specify the private key and user
+                sh '''
+                    ansible-playbook -i 54.204.216.90, \
+                    --user ec2-user \
+                    --private-key /var/jenkins_home/.ssh/Gh-test.pem \
+                    deploy-docker.yaml
+                '''
             }
         }
     }
+    
 
     post {
         success {
