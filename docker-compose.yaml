@@ -14,8 +14,8 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
 
-    # volumes:
-    #   - db-data:/var/lib/mysql/data
+    volumes:
+      - db-data:/var/lib/mysql/data
 
   mongo-express:
     image: mongo-express

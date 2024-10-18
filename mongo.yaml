@@ -1,4 +1,3 @@
-version: '3'
 services:
   my-app:
     image: ghanemovic/depi-final-project:latest
@@ -33,7 +32,6 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - "mongodb"
-
 
 
 volumes:
