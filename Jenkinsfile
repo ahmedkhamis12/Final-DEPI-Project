@@ -52,13 +52,28 @@ pipeline {
                 }
             }
         }
-        stage('Run Ansible Playbook') {
+        stage('Pull Latest Docker Image') {
             steps {
                 // Run the playbook and specify the private key and user
                 sh '''
                     ansible-playbook -i 54.204.216.90, \
                     --user ec2-user \
                     --private-key /var/jenkins_home/.ssh/Gh-test.pem \
+                    --tags pull_image \
+                    deploy-docker.yaml
+                '''
+            }
+        }
+    }
+    
+    stage('Recreate Docker Containers') {
+            steps {
+                // Run the playbook and specify the private key and user
+                sh '''
+                    ansible-playbook -i 54.204.216.90, \
+                    --user ec2-user \
+                    --private-key /var/jenkins_home/.ssh/Gh-test.pem \
+                    --tags recreate_containers \
                     deploy-docker.yaml
                 '''
             }
