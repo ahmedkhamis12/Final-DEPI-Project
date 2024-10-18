@@ -66,7 +66,7 @@ pipeline {
         }
     }
     
-    stage('Recreate Docker Containers') {
+        stage('Recreate Docker Containers') {
             steps {
                 // Run the playbook and specify the private key and user
                 sh '''
