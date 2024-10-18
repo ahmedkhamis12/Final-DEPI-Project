@@ -72,13 +72,10 @@
         update_cache: yes
         state: present
 
-- name: Pull the latest image
-  command: docker-compose -f /home/ec2-user/mongo.yaml pull
-
 - name: deploy docker-compose
   hosts: 54.204.216.90
   tasks:
     - name: deploy docker-compose
       become: true
       become_user: root
-      command: docker-compose -f /home/ec2-user/mongo.yaml up -d --force-recreate
+      command: docker-compose -f /home/ec2-user/mongo.yaml up -d 
