@@ -13,6 +13,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Checkout Code') {
+            steps {
+                // Checkout code from your repo
+                git branch: 'test', url: 'https://github.com/AhMed-GhaNem25/Final-DEPI-Project.git'
+            }
+        }
         stage("Install Dependencies") {
             steps {
                 script {
@@ -36,7 +43,7 @@ pipeline {
                 }
             }
         }
-        }
+    }
         
         stage("Build Image and Push to Docker Hub") {
             steps {
