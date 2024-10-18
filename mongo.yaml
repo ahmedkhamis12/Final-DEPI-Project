@@ -35,7 +35,6 @@ services:
       - "mongodb"
 
 
-
-# volumes:
-#   db-data:
-#     driver: local
+volumes:
+  db-data:
+    driver: local
