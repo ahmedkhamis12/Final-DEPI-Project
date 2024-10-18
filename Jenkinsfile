@@ -35,11 +35,11 @@ pipeline {
         //     }
         // }
 
-        stage('Parallel Tests') {
-            parallel {
-                stage('Unit Tests') {
-                    steps {
-                        sh 'npx jest'
+    stage('Parallel Tests') {
+        parallel {
+            stage('Unit Tests') {
+                steps {
+                    sh 'npx jest'
                 }
             }
         }
@@ -80,3 +80,4 @@ pipeline {
         }
     }
 
+}
