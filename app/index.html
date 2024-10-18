@@ -31,6 +31,7 @@
             object-fit: cover;
             border: 4px solid #007acc;
             display: block;
+            margin: 0 auto;
         }
         h1 {
             font-size: 24px;
@@ -80,7 +81,7 @@
     <div class='container' id='container'>
         <div class="header">
             <h1>DevOps Engineer Profile</h1>
-            <img src='images/DevOps.gif' alt="images/DevOps.gif">
+            <img src='./images/DevOps.gif' alt="images/DevOps.gif">
         </div>
         <div class="profile-details">
             <span>Name:</span> <h3 id='name'>Ahmed Ghanem</h3>
@@ -115,7 +116,7 @@
     <script>
         // Fetch user profile data
         (async function init() {
-            const response = await fetch('http://54.204.216.90/:3000/get-profile');
+            const response = await fetch('http://localhost/:3000/get-profile');
             const user = await response.json();
 
             document.getElementById('name').textContent = user.name || 'Ahmed Ghanem';
@@ -137,7 +138,7 @@
                 interests: document.getElementById('input-interests').value
             };
 
-            const response = await fetch('http://54.204.216.90/:3000/update-profile', {
+            const response = await fetch('http://localhost/:3000/update-profile', {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
