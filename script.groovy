@@ -39,11 +39,4 @@ def buildImage() {
     }
 }
 
-def deployApp() {
-    echo "Deploying the application..."
-    withCredentials([sshUserPrivateKey(credentialsId: 'SSH host', keyFileVariable: 'admin')]) {
-                        sh 'ansible-playbook deploy-docker.yaml'
-                    }
-}
-
 return this
