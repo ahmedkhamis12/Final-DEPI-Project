@@ -29,22 +29,16 @@ pipeline {
             }
         }
 
-        // stage('Run Unit Tests') {
-        //     steps {
-        //         sh 'npx jest'
-        //     }
-        // }
-
         stage('Parallel Tests') {
             parallel {
                 stage('Unit Tests') {
                     steps {
                         sh 'npx jest'
+                    }
                 }
             }
         }
-    }
-        
+
         stage("Build Image and Push to Docker Hub") {
             steps {
                 script {
@@ -52,6 +46,7 @@ pipeline {
                 }
             }
         }
+
         stage('Pull Latest Docker Image') {
             steps {
                 // Run the playbook and specify the private key and user
@@ -64,9 +59,8 @@ pipeline {
                 '''
             }
         }
-    }
-    
-        stage('Recreate Docker Containers') {
+
+        stage('Recreate Docker Containers') {  // Move this stage inside the stages block
             steps {
                 // Run the playbook and specify the private key and user
                 sh '''
@@ -79,7 +73,6 @@ pipeline {
             }
         }
     }
-    
 
     post {
         success {
@@ -93,3 +86,4 @@ pipeline {
             }
         }
     }
+}
