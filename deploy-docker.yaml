@@ -52,7 +52,7 @@
       copy:
         src: ./mongo.yaml
         dest: /home/ec2-user/mongo.yaml
-        force: yes
+        
 
 - name: copy utility app
   hosts: 54.204.216.90
@@ -82,8 +82,3 @@
       become: true
       become_user: root
       command: docker-compose -f /home/ec2-user/mongo.yaml up -d --force-recreate
-
-- name: Clean up unused Docker resources
-  command: docker system prune -f
-
-      

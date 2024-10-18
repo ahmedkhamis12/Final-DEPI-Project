@@ -29,16 +29,22 @@ pipeline {
             }
         }
 
+        // stage('Run Unit Tests') {
+        //     steps {
+        //         sh 'npx jest'
+        //     }
+        // }
+
         stage('Parallel Tests') {
             parallel {
                 stage('Unit Tests') {
                     steps {
                         sh 'npx jest'
-                    }
                 }
             }
         }
-
+    }
+        
         stage("Build Image and Push to Docker Hub") {
             steps {
                 script {
@@ -46,33 +52,19 @@ pipeline {
                 }
             }
         }
-
-        stage('Pull Latest Docker Image') {
+        stage('Run Ansible Playbook') {
             steps {
                 // Run the playbook and specify the private key and user
                 sh '''
                     ansible-playbook -i 54.204.216.90, \
                     --user ec2-user \
                     --private-key /var/jenkins_home/.ssh/Gh-test.pem \
-                    --tags pull_image \
-                    deploy-docker.yaml
-                '''
-            }
-        }
-
-        stage('Recreate Docker Containers') {  // Move this stage inside the stages block
-            steps {
-                // Run the playbook and specify the private key and user
-                sh '''
-                    ansible-playbook -i 54.204.216.90, \
-                    --user ec2-user \
-                    --private-key /var/jenkins_home/.ssh/Gh-test.pem \
-                    --tags recreate_containers \
                     deploy-docker.yaml
                 '''
             }
         }
     }
+    
 
     post {
         success {
@@ -86,4 +78,5 @@ pipeline {
             }
         }
     }
+
 }
