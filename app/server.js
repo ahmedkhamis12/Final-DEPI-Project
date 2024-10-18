@@ -82,6 +82,8 @@ app.get('/get-profile', function (req, res) {
   });
 });
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 if (require.main === module) {
   app.listen(port, () => {
     console.log(`Application is running on http://localhost:${port}`);
