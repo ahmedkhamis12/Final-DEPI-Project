@@ -84,11 +84,11 @@
             <img src="/images/DevOps.gif" alt="profile picture">
         </div>
         <div class="profile-details">
-            <span>Name:</span> <h3 id='Name'>Enter Your Name</h3>
+            <span>Name:</span> <h3 id='name'>Ahmed Ghanem</h3>
             <hr />
-            <span>Email:</span> <h3 id='email'>Enter Your E-mail</h3>
+            <span>Email:</span> <h3 id='email'>Ahmed@Ghanem.com</h3>
             <hr />
-            <span>Interests:</span> <h3 id='interests'>Enter your interests</h3>
+            <span>Interests:</span> <h3 id='interests'>DevOps, Cloud Infrastructure, CI/CD</h3>
             <hr />
             <button class='button' onclick="updateProfile()">Edit Profile</button>
         </div>
@@ -101,13 +101,13 @@
         </div>
         <div class="profile-edit">
             <label for='input-name'>Name:</label>
-            <input type="text" id='input-name' value='Enter Your Name' />
+            <input type="text" id='input-name' value='Ahmed Ghanem' />
             <hr />
             <label for='input-email'>Email:</label>
-            <input type="email" id='input-email' value='Enter your interests' />
+            <input type="email" id='input-email' value='Ahmed@Ghanem.com' />
             <hr />
             <label for='input-interests'>Interests:</label>
-            <input type="text" id='input-interests' value='Enter your interests' />
+            <input type="text" id='input-interests' value='DevOps, Cloud Infrastructure, CI/CD' />
             <hr />
             <button class='button' onclick="handleUpdateProfileRequest()">Update Profile</button>
         </div>
@@ -119,9 +119,9 @@
             const response = await fetch('http://54.204.216.90:3000/get-profile');
             const user = await response.json();
 
-            document.getElementById('name').textContent = user.name || 'Enter Your Name';
-            document.getElementById('email').textContent = user.email || 'Enter your interests';
-            document.getElementById('interests').textContent = user.interests || 'Enter your interests';
+            document.getElementById('name').textContent = user.name || 'Ahmed Ghanem';
+            document.getElementById('email').textContent = user.email || 'Ahmed@Ghanem.com';
+            document.getElementById('interests').textContent = user.interests || 'DevOps, Cloud Infrastructure, CI/CD';
 
             const cont = document.getElementById('container');
             cont.style.display = 'block';
