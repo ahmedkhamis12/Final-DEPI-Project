@@ -119,9 +119,9 @@
             const response = await fetch('http://54.204.216.90:3000/get-profile');
             const user = await response.json();
 
-            document.getElementById('name').textContent = user.name || 'Ahmed Ghanem';
-            document.getElementById('email').textContent = user.email || 'Ahmed@Ghanem.com';
-            document.getElementById('interests').textContent = user.interests || 'DevOps, Cloud Infrastructure, CI/CD';
+            document.getElementById('name').textContent = user.name || 'Enter Your Name';
+            document.getElementById('email').textContent = user.email || 'Enter your interests';
+            document.getElementById('interests').textContent = user.interests || 'Enter your interests';
 
             const cont = document.getElementById('container');
             cont.style.display = 'block';
