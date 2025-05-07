@@ -1,72 +1,157 @@
-## demo app - developing with Docker
 
-This demo app shows a simple user profile app set up using 
-- index.html with pure js and css styles
-- nodejs backend with express module
-- mongodb for data storage
+# Final-DEPI-Project
 
-All components are docker-based
+A complete DevOps CI/CD project that automates the deployment of a containerized Node.js and MongoDB application using Jenkins, Docker, Ansible, and Kubernetes. This project was developed as a capstone for the Digital Egypt Pioneers Initiative (DEPI), demonstrating end-to-end delivery and infrastructure automation on AWS.
 
-### With Docker
+---
 
-#### To start the application
+## 🚀 Project Overview
 
-Step 1: Create docker network
+This project features a RESTful Node.js application for user profile management, integrated with MongoDB. The DevOps workflow includes:
 
-    docker network create mongo-network 
+- Containerization with Docker
+- Orchestration with Docker Compose (for local) and Kubernetes (for production)
+- CI/CD automation using Jenkins
+- Infrastructure provisioning and configuration using Ansible
+- Deployment on AWS EC2 instances
+- Unit testing and automated build pipeline
 
-Step 2: start mongodb 
+---
 
-    docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password --name mongodb --net mongo-network mongo    
+## 📁 Tech Stack
 
-Step 3: start mongo-express
-    
-    docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password --net mongo-network --name mongo-express -e ME_CONFIG_MONGODB_SERVER=mongodb mongo-express   
+- **Backend**: Node.js, Express.js, MongoDB
+- **Containerization**: Docker, Docker Compose
+- **CI/CD**: Jenkins
+- **Configuration Management**: Ansible
+- **Container Orchestration**: Kubernetes
+- **Cloud**: AWS EC2
+- **Version Control**: Git, GitHub
 
-_NOTE: creating docker-network in optional. You can start both containers in a default network. In this case, just emit `--net` flag in `docker run` command_
+---
 
-Step 4: open mongo-express from browser
+## ⚙️ Features
 
-    http://localhost:8081
+- REST API for user profile management
+- MongoDB integration with persistent storage
+- Jenkins pipeline for:
+  - Code checkout
+  - Unit testing
+  - Docker build & push
+  - Deployment via Ansible and Kubernetes
+- Infrastructure as Code (IaC) with Ansible playbooks
+- Kubernetes YAML files for production-grade deployment
 
-Step 5: create `user-account` _db_ and `users` _collection_ in mongo-express
+---
 
-Step 6: Start your nodejs application locally - go to `app` directory of project 
+## 🧩 Project Structure
 
-    cd app
-    npm install 
-    node server.js
-    
-Step 7: Access you nodejs application UI from browser
+```
+Final-DEPI-Project/
+│
+├── server.js                # Main Node.js app
+├── Dockerfile               # Backend Docker configuration
+├── docker-compose.yml       # Local multi-container setup
+├── ansible/                 # Ansible playbooks and inventories
+│   ├── install_dependencies.yml
+│   ├── deploy_app.yml
+│   └── inventory
+├── jenkins/                 # Jenkins pipeline config (Jenkinsfile)
+├── k8s/                     # Kubernetes manifests (Deployment, Service)
+│   ├── deployment.yaml
+│   └── service.yaml
+├── test/                    # Unit tests
+└── README.md
+```
 
-    http://localhost:3000
+---
 
-### With Docker Compose
+## 🧪 Running Locally (Docker Compose)
 
-#### To start the application
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/ahmedkhamis12/Final-DEPI-Project.git
+   cd Final-DEPI-Project
+   ```
 
-Step 1: start mongodb and mongo-express
+2. **Run with Docker Compose**
+   ```bash
+   docker-compose up --build
+   ```
 
-    docker-compose -f docker-compose.yaml up
-    
-_You can access the mongo-express under localhost:8080 from your browser_
-    
-Step 2: in mongo-express UI - create a new database "my-db"
+3. **API is available at:**
+   ```
+   http://localhost:3000
+   ```
 
-Step 3: in mongo-express UI - create a new collection "users" in the database "my-db"       
-    
-Step 4: start node server 
+---
 
-    cd app
-    npm install
-    node server.js
-    
-Step 5: access the nodejs application from browser 
+## 🔄 CI/CD Pipeline Overview
 
-    http://localhost:3000
+1. **Push to GitHub**
+2. **Jenkins pipeline** triggers:
+   - Cloning the repo
+   - Installing dependencies
+   - Running unit tests
+   - Building Docker image
+   - Pushing image to DockerHub
+3. **Ansible** provisions the EC2 environment
+4. **Kubernetes** deploys the app using manifests
 
-#### To build a docker image from the application
+---
 
-    docker build -t my-app:1.0 .       
-    
-The dot "." at the end of the command denotes location of the Dockerfile.
+## 🧰 Deployment with Ansible
+
+1. **Configure inventory**
+   Update the IP address in `ansible/inventory`.
+
+2. **Run playbooks**
+   ```bash
+   ansible-playbook -i ansible/inventory ansible/install_dependencies.yml
+   ansible-playbook -i ansible/inventory ansible/deploy_app.yml
+   ```
+
+---
+
+## ☸️ Kubernetes Deployment
+
+1. **Apply manifests**
+   ```bash
+   kubectl apply -f k8s/deployment.yaml
+   kubectl apply -f k8s/service.yaml
+   ```
+
+2. **Expose the service**
+   ```bash
+   kubectl port-forward svc/node-app-service 3000:3000
+   ```
+
+---
+
+## ✅ Sample API Endpoints
+
+- `GET /api/users` – Get all users  
+- `POST /api/users` – Add a new user  
+- `PUT /api/users/:id` – Update a user  
+- `DELETE /api/users/:id` – Delete a user  
+
+---
+
+
+
+## 🏆 Achievements
+
+- Deployed production-ready containerized application
+- Automated full CI/CD workflow with Jenkins & Ansible
+- Implemented scalable Kubernetes architecture
+- Used AWS EC2 for hosting
+
+---
+
+
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
